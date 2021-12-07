@@ -1,4 +1,5 @@
 const addFormToCollection = (e) => {
+    console.log("asdf'")
     const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
 
     const item = document.createElement('li');

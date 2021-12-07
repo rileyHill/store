@@ -10,22 +10,23 @@
         {{ form_row(form.description) }}
 
         <h3>OrderLines: </h3>
-        <ul class="orderLines" id="orderLine_list" data-prototype="{{ form_widget(form.orderLines.vars.prototype)|e('html_attr') }}">
-            {% for orderLine in form.orderLines %}
-                <li>{{ form_row(orderLine.count) }}</li>
-                <li>{{ form_row(orderLine.totalPrice) }}</li>
-                <li>{{ form_row(orderLine.discount) }}</li>
-                <li>{{ form_row(orderLine.payablePrice) }}</li>
-                <li>{{ form_row(orderLine.product) }}</li>
-            {% endfor %}
-            <button type="button" class="add_item_link" data-collection-holder-class="orderLines">Add new line</button>
+        <ul class="orderLines" id="orderLine_list" data-index="{{ form.orderLines|length > 0 ? form.orderLines|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.orderLines.vars.prototype)|e('html_attr') }}">
+            <li> {% for orderLine in form.orderLines %}
+                {{ form_row(orderLine.product) }}
+                {{ form_row(orderLine.count) }}
+                {{ form_row(orderLine.totalPrice) }}
+                {{ form_row(orderLine.discount) }}
+                {{ form_row(orderLine.payablePrice) }}
+            {% endfor %} </li>
         </ul>
-
+    <button type="button" class="add_item_link" data-collection-holder-class="orderLines">Add new line</button>
     {{ form_end(form) }}
-{#    <script src="public/js/app.js">#}
-{#        document#}
-{#            .querySelectorAll('.add_item_link')#}
-{#            .forEach(btn => btn.addEventListener("click", addFormToCollection));#}
-{#    </script>#}
+
+    <script src="/js/app.js"></script>
+    <script >
+        document
+            .querySelectorAll('.add_item_link')
+            .forEach(btn => btn.addEventListener("click", addFormToCollection));
+    </script>
 
 {% endblock %}
