@@ -1,0 +1,21 @@
+{# templates/home/index.html.twig #}
+{% extends('base.html.twig') %}
+
+
+{% block body %}
+
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h1>What Do You Want To Do?</h1>
+
+    <ul>
+        <a href="{{ path('createProduct') }}">Create New Product</a></br>
+        <a href="{{ path('searchProduct') }}">Find Product</a></br>
+        <a href="{{ path('createOrder') }}">Create New Order</a></br>
+        <a href="{{ path('searchOrder') }}">Find Order</a></br>
+    </ul>
+{% endblock %}

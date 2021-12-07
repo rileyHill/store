@@ -1,0 +1,20 @@
+{# templates/order/findOrder.html.twig #}
+{% extends('base.html.twig') %}
+
+
+{% block body %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h2>Enter order id to search:</h2>
+    <form action="{{ path('findOrder') }}" method="GET">
+        <label for="orderId">Order Id:</label><br>
+        <input type="text" id="orderId" name="orderId"><br><br>
+        <input type="submit" value="Search">
+    </form>
+
+
+{% endblock %}

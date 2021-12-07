@@ -1,0 +1,31 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+    <h2>Fill the form: </h2>
+
+    {{ form_start(form) }}
+        {{ form_row(form.orderCode) }}
+        {{ form_row(form.orderDate) }}
+        {{ form_row(form.customerName) }}
+        {{ form_row(form.description) }}
+
+        <h3>OrderLines: </h3>
+        <ul class="orderLines" id="orderLine_list" data-prototype="{{ form_widget(form.orderLines.vars.prototype)|e('html_attr') }}">
+            {% for orderLine in form.orderLines %}
+                <li>{{ form_row(orderLine.count) }}</li>
+                <li>{{ form_row(orderLine.totalPrice) }}</li>
+                <li>{{ form_row(orderLine.discount) }}</li>
+                <li>{{ form_row(orderLine.payablePrice) }}</li>
+                <li>{{ form_row(orderLine.product) }}</li>
+            {% endfor %}
+            <button type="button" class="add_item_link" data-collection-holder-class="orderLines">Add new line</button>
+        </ul>
+
+    {{ form_end(form) }}
+{#    <script src="public/js/app.js">#}
+{#        document#}
+{#            .querySelectorAll('.add_item_link')#}
+{#            .forEach(btn => btn.addEventListener("click", addFormToCollection));#}
+{#    </script>#}
+
+{% endblock %}

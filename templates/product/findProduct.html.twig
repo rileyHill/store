@@ -1,0 +1,19 @@
+{# templates/product/findProduct.html.twig #}
+{% extends('base.html.twig') %}
+
+
+{% block body %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h2>Enter product id to search:</h2>
+
+    <form action="{{ path('findProduct') }}" method="GET" name="search">
+        <label for="productId">Product Id:</label><br>
+        <input type="text" id="productId" name="productId"><br><br>
+        <input type="submit" value="Search">
+    </form>
+
+{% endblock %}

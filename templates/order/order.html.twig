@@ -1,0 +1,32 @@
+{# templates/order/order.html.twig #}
+{% extends('base.html.twig') %}
+
+
+{% block body %}
+    {# show order details #}
+    <h2> Order Information: </h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Order Date</th>
+            <th>Customer Name</th>
+            <th>Total Amount</th>
+{#            <th>Order Lines id</th>#}
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.orderDate.format('d/m/Y') }}</td>
+                <td>{{ order.customerName }}</td>
+                <td>{{ order.totalAmount }} $</td>
+{#                <td>{{ order.orderLines }}</td>#}
+                <td>{{ order.description }}</td>
+                <td>
+                    <a href="{{ path('deleteOrder',{'id': order.id}) }}">Delete</a>
+                    <a href="{{ path('updateOrder',{'id': order.id}) }}">Edit</a>
+                </td>
+            </tr>
+    </table>
+
+{% endblock %}

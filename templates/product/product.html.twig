@@ -1,0 +1,32 @@
+{# templates/product/product.html.twig #}
+{% extends('base.html.twig') %}
+
+
+{% block body %}
+{# show product details #}
+    <h2> Product Information: </h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }} $</td>
+            <td>{{ product.code }}</td>
+            <td>{{ product.description }}</td>
+            <td>
+                <a href="{{ path('deleteProduct',{'id': product.id}) }}">Delete</a>-
+                <a href="{{ path('updateProduct',{'id': product.id}) }}">Edit</a>
+            </td>
+        </tr>
+
+    </table>
+
+{% endblock %}
